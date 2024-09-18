@@ -35,8 +35,9 @@ $Mahasiswa = new mahasiswa("Fatimah Azzahra", "230102081", "Komputer dan Bisnis"
 
 ## **Langkah-Langkah Implementasi Prinsip OOP dalam PHP
 1.) Membuat Class dan Object
+
     // 1. Membuat class Mahasiswa
-class Mahasiswa {
+     class Mahasiswa {
     // Atribut 
     private $nama;
     private $nim;
@@ -57,6 +58,8 @@ class Mahasiswa {
     echo "<br><br>";
 
   2.) Encapsulation
+  encapsulation adalah proses membungkus data dan metode dalam sebuah kelas, sehingga hanya bagian-bagian tertentu yang dapat diakses dari luar kelas
+  
     // 2. encapsulation
     // Getter untuk nama
     public function getNama() {
@@ -102,8 +105,10 @@ class Mahasiswa {
     echo "<br><br>";
 
   3.) Inheritance
+  inheritance atau pewarisan dalam PHP adalah proses pewarisan data dan metode dari suatu kelas yang sudah ada ke kelas baru
+  
       // 3. Membuat class Pengguna1
-class Pengguna1 {
+     class Pengguna1 {
     protected $nama;
 
     // Konstruktor
@@ -115,11 +120,11 @@ class Pengguna1 {
     public function getNama() {
         return $this->nama;
     }
-}
+     }
 
 
-// Membuat class Dosen yang mewarisi Pengguna1
-class Dosen extends Pengguna1 {
+     // Membuat class Dosen yang mewarisi Pengguna1
+     class Dosen extends Pengguna1 {
     private $matakuliah;
 
     // Konstruktor
@@ -147,8 +152,10 @@ class Dosen extends Pengguna1 {
 
 
   4.) Polymorphism 
+  Polimorfisme dalam PHP adalah konsep dalam Pemrograman Berorientasi Objek (OOP) yang memungkinkan objek merespons panggilan metode yang sama dengan cara yang berbeda
+  
       // 4. polymorphism 
-class pengguna2 {
+     class pengguna2 {
     //metode akses fitur
     public function aksesFitur() {
         echo "fitur pengguna";
@@ -179,6 +186,8 @@ class pengguna2 {
     $dosen->aksesFitur();
 
   5.) Abstrak
+  Abstrak dalam PHP adalah kelas dan metode abstrak yang merupakan konsep penting dalam pemrograman berorientasi objek (OOP). Berikut penjelasannya
+  
       // 5. Membuat abstract class penggunaAbs
       abstract class penggunaAbs {
       abstract public function aksesFitur();
@@ -209,6 +218,182 @@ class pengguna2 {
 ## **Output Program
 
 ![jobsheet2](https://github.com/user-attachments/assets/bcc1fbaa-68fa-4499-a375-8da8d4f9a966)
+
+
+## **Dokumentasi Jobsheet 3
+## **Instruksi.php
+1. Class (Person)
+   Class Person memiliki atribut name (protected) dan menggunakan methode getName() untuk mengembalikan nama orang
+
+   class Person {
+    //atribut
+    protected $name;
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+     }
+
+2. Class (Student)
+   kelas ini mewarisi dari person dan menambahkan atribut studentID dengan menggunakan methode getName() untuk menampilkan nama siswa dan methode getStudentID() untuk menambahkan id siswa serta setName() dan setStudentID() untuk mengubah atribut
+
+   // Kelas Student yang mewarisi dari Person
+     class Student extends Person {
+    private $studentID;
+
+    public function __construct($name, $studentID) {
+        parent::__construct($name);
+        $this->studentID = $studentID;
+    }
+
+    public function getName() {
+        return "Nama Siswa: " . $this->name;
+    }
+
+    public function getStudentID() {
+        return $this->studentID;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setStudentID($studentID) {
+        $this->studentID = $studentID;
+    }
+     }
+
+3. Class (teacher)
+   kelas ini mewarisi dari person dan menambahkan atribut studentID dengan menggunakan methode getName() untuk menampilkan nama guru
+
+   // 2. Buat Kelas Teacher yang juga mewarisi dari Person
+     class Teacher extends Person {
+    private $teacherID;
+
+    public function __construct($name, $teacherID) {
+        parent::__construct($name);
+        $this->teacherID = $teacherID;
+    }
+
+    public function getName() {
+        return "Nama Guru: " . $this->name;
+    }
+
+    public function getTeacherID() {
+        return $this->teacherID;
+    }
+     }
+
+## **Tugas Jobsheet3
+1. Class (person)
+   class Person {
+    protected $name;
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getRole() {
+        return "Person";
+    }
+     }
+
+2. Class dosen
+     // Kelas Dosen
+class Dosen extends Person {
+    private $nidn;
+
+    public function __construct($name, $nidn) {
+        parent::__construct($name);
+        $this->nidn = $nidn;
+    }
+
+    public function getNIDN() {
+        return $this->nidn;
+    }
+
+    public function getRole() {
+        return "Dosen";
+    }
+     }
+
+3. Class mahasiswa
+   // Kelas Mahasiswa
+     class Mahasiswa extends Person {
+    private $nim;
+
+    public function __construct($name, $nim) {
+        parent::__construct($name);
+        $this->nim = $nim;
+    }
+
+    public function getNIM() {
+        return $this->nim;
+    }
+
+    public function getRole() {
+        return "Mahasiswa";
+    }
+     }
+
+4. Class abstrak jurnal
+   // Kelas JurnalDosen
+     class JurnalDosen extends Jurnal {
+    public function pengajuanJurnal() {
+        return "Pengajuan jurnal oleh Dosen.";
+    }
+     }
+
+5. Class jurnal mahasiswa
+   // Kelas JurnalMahasiswa
+     class JurnalMahasiswa extends Jurnal {
+    public function pengajuanJurnal() {
+        return "Pengajuan jurnal oleh Mahasiswa.";
+    }
+     }
+
+6. fungsi untuk menampilkan
+   // Fungsi untuk menampilkan informasi
+     function displayInfo() {
+    $dosen = new Dosen("Fatimah", "12345");
+    $mahasiswa = new Mahasiswa("Zahra", "67890");
+
+    echo "Nama :". $dosen->getName() . "<br>".  " Status: " . $dosen->getRole() . "<br>" . "NIDN: " . $dosen->getNIDN() ;
+    echo "<br>";
+    echo "<br>";
+    echo "Nama :". $mahasiswa->getName() . "<br>"." Status: " . $mahasiswa->getRole() . "<br>"." NIM: " . $mahasiswa->getNIM() . "\n";
+    echo "<br>";
+    echo "<br>";
+    $jurnalDosen = new JurnalDosen();
+    $jurnalMahasiswa = new JurnalMahasiswa();
+
+    echo $jurnalDosen->pengajuanJurnal() . "\n"; // Output: Pengajuan jurnal oleh Dosen.
+    echo $jurnalMahasiswa->pengajuanJurnal() . "\n"; // Output: Pengajuan jurnal oleh Mahasiswa.
+     }
+
+
+## **Output instruksi
+
+![instuksi](https://github.com/user-attachments/assets/b08ccb55-361e-4d8a-a440-38577ed9ed09)
+
+## **Output Tugas 
+
+![tugas](https://github.com/user-attachments/assets/be1ea495-f558-4b39-bc70-15045ea56132)
+
+   
+
+
+
+
+
 
 
 
